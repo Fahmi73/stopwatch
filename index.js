@@ -1,48 +1,43 @@
-const display = document.getElementById("display");
-let timer = null;
-let startTime = 0;
-let elapseTime = 0;
-isRunning = false;
+const displayDate = document.getElementById("displayDate");
+const displayDay = document.getElementById("myH1");
+const displayClock = document.getElementById("displayClock");
+// function update(){
 
-function Start(){
-    if(!isRunning){
-        startTime = Date.now() - elapseTime;
-        timer = setInterval(update, 10);
-        isRunning = true;
+//     display.textContent = `${hours}:${minutes}:${seconds}:${milisecond}`;
+// }
+console.log( new Date());
+function updateTime(){
+    const day = new Date().getDay();
+    const date = new Date().getDate();
+    const month = new Date().getMonth();
+    const year = new Date().getFullYear();
+    const hours = new Date().getHours();
+    const minutes = new Date().getMinutes();
+
+    if(day === 0){
+        displayDay.textContent = "Sunday";
     }
-}
-
-function Stop(){
-    if(isRunning){
-        clearInterval(timer);
-
-        // edit elapse time dan mengurangi nya dengan startTime
-        elapseTime = Date.now() - startTime;
-        isRunning = false;
+    else if(day === 1){
+        displayDay.textContent = "Monday";
     }
+    else if(day === 2){
+        displayDay.textContent = "Tuesday";
+    }
+    else if(day === 3){
+        displayDay.textContent = "Wednesday";
+    }
+    else if(day === 4){
+        displayDay.textContent = "Thursday";
+    }
+    else if(day === 5){
+        displayDay.textContent = "Friday";
+    }
+    else if(day === 6){
+        displayDay.textContent = "Saturday";
+    }
+
+    displayClock.textContent = `${hours}.${minutes}`;
+    displayDate.textContent = `${date}/${month+1}/${year}`;
 }
-
-function Reset(){
-    clearInterval(timer);
-    elapseTime = 0;
-    startTime = 0;
-    isRunning = false;
-    display.textContent = "00:00:00:00";
-}
-
-function update(){
-    const currentTime = Date.now();
-    elapseTime = currentTime - startTime;
-
-    let hours = Math.floor(elapseTime / (1000 * 60 * 60));
-    let minutes = Math.floor(elapseTime / (1000 * 60) % 60);
-    let seconds = Math.floor(elapseTime / 1000 %  60);
-    let milisecond = Math.floor(elapseTime % 1000 / 10);
-
-    hours = String(hours).padStart(2, "0");
-    minutes = String(minutes).padStart(2, "0");
-    seconds = String(seconds).padStart(2, "0");
-    milisecond = String(milisecond).padStart(2, "0");
-
-    display.textContent = `${hours}:${minutes}:${seconds}:${milisecond}`;
-}
+updateTime();
+setInterval(updateTime, 1000);
