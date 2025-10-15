@@ -7,12 +7,12 @@ const displayClock = document.getElementById("displayClock");
 // }
 console.log( new Date());
 function updateTime(){
-    const day = new Date().getDay();
-    const date = new Date().getDate();
-    const month = new Date().getMonth();
-    const year = new Date().getFullYear();
-    const hours = new Date().getHours();
-    const minutes = new Date().getMinutes();
+    let day = new Date().getDay();
+    let date = new Date().getDate();
+    let month = new Date().getMonth();
+    let year = new Date().getFullYear();
+    let hours = new Date().getHours();
+    let minutes = new Date().getMinutes();
 
     if(day === 0){
         displayDay.textContent = "Sunday";
@@ -35,6 +35,9 @@ function updateTime(){
     else if(day === 6){
         displayDay.textContent = "Saturday";
     }
+
+    hours = String(hours).padStart(2, '0');
+    minutes = String(minutes).padStart(2, '0');
 
     displayClock.textContent = `${hours}.${minutes}`;
     displayDate.textContent = `${date}/${month+1}/${year}`;
