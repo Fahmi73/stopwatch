@@ -43,7 +43,7 @@ body {
     color: hsl(210, 100%, 65%);
 }
 
-@media (min-width: 600px) {
+@media (max-width: 600px) {
     body {
         background-size: cover;
         background-position: 30% center;
