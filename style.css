@@ -45,7 +45,7 @@ body {
 
 @media (max-width: 768px) {
     body {
-        background-size: center;
+        background-size: cover;
         background-position: 30% center;
     }
 
