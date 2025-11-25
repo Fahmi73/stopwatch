@@ -43,7 +43,7 @@ body {
     color: hsl(210, 100%, 65%);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     body {
         background-size: center;
         background-position: 30% center;
